@@ -13,7 +13,7 @@ body {
 #header {
     width: 100%;
     height: 100vh;
-    background-image: url(images/background.png);
+    background-image: url(images/elliott-engelmann-DjlKxYFJlTc-unsplash.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -30,7 +30,7 @@ nav {
 }
 
 .logo {
-    width: 140px;
+    width: 160px;
 }
 
 nav ul li {
@@ -75,18 +75,17 @@ nav ul li a:hover::after {
     color: #ff004f;
 }
 
-.header-text p {
-    font-size: 1.2em;
-    color: #9aff3c;
+.header-text p>span {
     display: inline-block;
+    font-size: .9em;
+    color: #9aff3c;
     vertical-align: bottom;
     white-space: nowrap;
-    /* Prevents line breaks inside the span */
     opacity: 0;
     /* Initially hide the spans */
 }
 
-/* CSS animation for the p tag */
+/* CSS animation for the spans */
 @keyframes animateWords {
     0% {
         opacity: 0;
@@ -111,7 +110,7 @@ nav ul li a:hover::after {
 }
 
 /* Apply the animation when the p tag is visible */
-.header-text p.is-visible {
+.header-text p.is-visible span {
     animation: animateWords 5s infinite;
     /* Adjust duration as needed */
 }
@@ -141,6 +140,7 @@ nav ul li a:hover::after {
     animation-delay: 2.5s;
     /* Delay the sixth span's animation */
 }
+
 
 /* ----------ABOUT---------- */
 #about {
@@ -197,9 +197,6 @@ nav ul li a:hover::after {
     transition: 0.5s;
 }
 
-/* .tab-links:hover::after{
-width: 100%;
-} */
 .tab-links.active-link::after {
     width: 50%;
 }
@@ -211,16 +208,154 @@ width: 100%;
 
 .tab-contents ul li span {
     color: #b54768;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .tab-contents {
     display: none;
 }
 
+.tab-contents img {
+    max-width: 100%;
+    height: auto;
+    display: grid;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .tab-contents.active-tab {
     display: block;
 }
+
+/* Only apply to the Skills section */
+.tab-contents.active-tab#skills ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-gap: 20px; /* Add some space between grid items */
+}
+
+.tab-contents.active-tab#skills ul li {
+    list-style: none;
+    text-align: center; /* Center text */
+    position: relative; /* Add position relative */
+    opacity: 0; /* Initially hide */
+    animation: fadeIn 0.5s ease forwards; /* Apply fade-in animation */
+}
+
+.tab-contents.active-tab#skills ul li img {
+    max-width: 100%;
+    height: 150px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensure all images have the same aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab-contents.active-tab#skills ul li span {
+    display: block;
+    margin-top: 10px; /* Add space between image and text */
+}
+
+/* New section for other skills */
+.other-skills {
+    margin-top: 30px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Adjust the styling for the grid items */
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 2.5s ease forwards;
+}
+
+.grid-item img {
+    width: 30px; /* Adjust the width of the icon as needed */
+    height: 30px; /* Set the height to match the width for consistency */
+    margin-bottom: 10px; /* Add spacing between the icon and text */
+}
+
+/* Adjust the styling for the span */
+.grid-item span {
+    font-size: 16px; /* Adjust the font size of the text */
+}
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+#certifications ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-gap: 20px; /* Add some space between grid items */
+}
+
+#certifications ul li {
+    list-style: none;
+    text-align: center; /* Center text */
+}
+
+#certifications ul li img {
+    max-width: 100%;
+    height: 150px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensure all images have the same aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#certifications ul li span {
+    display: block;
+    margin-top: 10px; /* Add space between image and text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #certifications ul {
+        grid-template-columns: repeat(2, 1fr); /* 1 column for screens smaller than 768px (mobile view) */
+    }
+}
+
 
 /* ----------SERVICES---------- */
 #services {
