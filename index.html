@@ -13,26 +13,30 @@
   </head>
 
   <body>
+    <div id="parallax-container">
     <div id="header">
       <div class="container">
-        <nav>
-          <img src="images/Logo/N.png" alt="my logo image" class="logo" />
-          <ul>
-            <li><a href="#header">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <i class="fas fa-times"></i>
-          </ul>
-          <i class="fas fa-bars"></i>
-        </nav>
+       <nav>
+  <img src="images/Logo/Name Logo.png" alt="my logo image" class="logo" />
+  <ul>
+    <li><a href="#header">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+</nav>
+
+
         <div class="header-text">
           <h1>
             Hi, I'm Eric <span> <em>Ndoyai</em></span
             ><br />Ndumbi from Kenya.
           </h1>
-          <br>
+          
           <p class="is-visible"><span>Customer</span>
             <span>Support</span>
             <span>Specialist</span>
@@ -334,44 +338,50 @@
         </p>
       </div>
     </div>
-
+</div>
     <script>
       
+      //parallax effect
+      window.addEventListener('scroll', function() {
+       const body = document.body;
+       let scrollPosition = window.scrollY;
+       body.style.transform = 'translateZ(' + scrollPosition + 'px)'; /* Apply 3D transformation based on scroll position */
+     });
 
       // JavaScript for handling the mobile navigation menu
-      document
-        .querySelector(".fas.fa-bars")
-        .addEventListener("click", function () {
-          document.querySelector("nav ul").classList.toggle("show");
-        });
-
-      document
-        .querySelector(".fas.fa-times")
-        .addEventListener("click", function () {
-          document.querySelector("nav ul").classList.remove("show");
-        });
-
-       // Smooth scroll effect
-       document.addEventListener('DOMContentLoaded', function () {
-  // Smooth scrolling for anchor links
-        const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+     document.querySelector(".menu-toggle").addEventListener("click", function () {
+  var navMenu = document.querySelector("nav ul");
+  navMenu.classList.toggle("show");
   
-        smoothScrollLinks.forEach(link => {
+  if (navMenu.classList.contains("show")) {
+    this.querySelector("i").classList.remove("fa-bars");
+    this.querySelector("i").classList.add("fa-times");
+  } else {
+    this.querySelector("i").classList.remove("fa-times");
+    this.querySelector("i").classList.add("fa-bars");
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Smooth scrolling for anchor links
+    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+
+    smoothScrollLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
-      
+
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
-      
+
             if (targetElement) {
-             window.scrollTo({
-                top: targetElement.offsetTop,
-                behavior: 'smooth'
-            });
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
             }
         });
-        });
     });
+});
+
 
     //Skills tab navigation
     var tabLinks = document.getElementsByClassName("tab-links");

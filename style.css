@@ -1,69 +1,172 @@
+/* Global CSS */
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-    background: #080808;
-    color: #fff;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+#parallax-container {
+  overflow-x: hidden;
+  perspective: 1px; /* Create a 3D perspective for parallax effect */
+  height: 100vh; /* Set height to fit viewport */
+  background-image: url('images/Background-Images/2206_w026_n002_2088b_p1_2088.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 #header {
-    width: 100%;
-    height: 100vh;
-    background-image: url(images/elliott-engelmann-DjlKxYFJlTc-unsplash.jpg);
-    background-size: cover;
-    background-position: center;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
 }
+
 
 .container {
-    padding: 10px 10%;
+  padding: 10px 10%;
 }
 
+/* Navigation CSS */
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: fixed; /* Set navigation to fixed position */
+  top: 0; /* Align navigation to the top of the viewport */
+  left: 0; /* Align navigation to the left of the viewport */
+  width: 100%; /* Make navigation full-width */
+  z-index: 9999; /* Ensure navigation stays above other elements */
 }
 
 .logo {
-    width: 160px;
+  max-width: 13%; /* Ensure the logo scales with the container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
 }
 
 nav ul li {
-    display: inline-block;
-    list-style: none;
-    margin: 10px 20px;
+  margin: 10px 20px;
 }
 
 nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    position: relative;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
 }
 
 nav ul li a::after {
+  content: '';
+  width: 0;
+  height: 3px;
+  background: #ff004f;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  nav ul {
+    display: flex; /* Ensure navigation links are visible for larger screens */
+  }
+
+  nav ul li {
+    margin: 10px 15px; /* Adjust margin for larger screens if needed */
+  }
+
+  nav ul li a {
+    font-size: 16px; /* Adjust font-size for larger screens */
+  }
+}
+
+/* Hamburger Menu CSS */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  z-index: 1001;
+  margin-top: 30px;
+}
+
+@media (max-width: 640px) {
+
+  .logo {
+    margin-top: 5px;
+    max-width: 30%; /* Ensure the logo scales with the container */
+    height: auto; /* Maintain aspect ratio */
+ }
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 20px; /* Adjust the position from 50px to 20px */
+    right: 20px;
+    z-index: 1001; /* Ensure the hamburger menu button stays on top of other content */
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + 10px); /* Adjust the position to start below the hamburger button */
+    right: 20px;
+    background-color: #ff004f !important;
+    padding: 20px 0;
+    text-align: center;
+    display: none;
+    z-index: 1000; /* Ensure the menu stays on top of other content */
+  }
+
+  nav ul li a::after {
     content: '';
     width: 0;
     height: 3px;
-    background: #ff004f;
+    background: #9aff3c;
     position: absolute;
     left: 0;
     bottom: -6px;
     transition: 0.5s;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li {
+    margin-top: 45px !important;
+  }
 }
 
-nav ul li a:hover::after {
-    width: 100%;
-}
 
 .header-text {
-    margin-top: 20%;
-    font-size: 30px;
+  margin-top: 50%; /* Adjust margin-top for responsiveness */
+  font-size: 4vw; /* Adjust font-size based on viewport width */
+}
+
+@media (min-width: 768px) {
+  .header-text {
+    margin-top: 25%; /* Adjust margin-top for larger screens */
+    font-size: 2.5vw; /* Adjust font-size based on viewport width */
+  }
 }
 
 .header-text h1 {
@@ -144,216 +247,209 @@ nav ul li a:hover::after {
 
 /* ----------ABOUT---------- */
 #about {
-    padding: 80px 0px;
-    color: #ababab;
+  min-height: 100vh; /* Set minimum height to viewport height */
+  padding: 80px 0;
+  color: #fffcfc;
+  position: relative;
+  overflow-y: auto; /* Enable vertical scrolling for content if needed */
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  width: 90%; /* Adjust as needed */
+  margin: 0 auto;
 }
 
 .row {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .about-col-1 {
-    flex-basis: 35%;
+  flex-basis: 35%;
 }
 
 .about-col-1 img {
-    width: 100%;
-    border-radius: 15px;
+  width: 100%;
+  border-radius: 15px;
 }
 
 .about-col-2 {
-    flex-basis: 60%;
+  flex-basis: 60%;
 }
 
 .sub-title {
-    font-size: 60px;
-    font-weight: 600;
-    color: #fff;
+  font-size: 3rem; /* Adjust font size for smaller screens */
+  font-weight: 600;
+  margin-bottom: 20px; /* Add spacing between title and content */
 }
 
 .tab-titles {
-    display: flex;
-    margin: 20px 0 40px;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  margin-bottom: 20px; /* Add spacing between tab titles and content */
 }
 
 .tab-links {
-    margin-right: 50px;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    position: relative;
+  margin-right: 20px; /* Reduce margin for smaller screens */
+  margin-bottom: 10px; /* Add spacing between tab links */
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
 }
 
 .tab-links::after {
-    content: '';
-    width: 0;
-    height: 3px;
-    background: #ff004f;
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    transition: 0.5s;
+  content: '';
+  width: 0;
+  height: 3px;
+  background: #ff004f;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  transition: 0.5s;
 }
 
 .tab-links.active-link::after {
-    width: 50%;
+  width: 50%;
 }
 
 .tab-contents ul li {
-    list-style: none;
-    margin: 10px 0;
+  margin-bottom: 10px; /* Add spacing between list items */
 }
 
 .tab-contents ul li span {
-    color: #b54768;
-    font-size: 18px;
+  display: block; /* Ensure span occupies full width */
+  color: #b54768;
+  font-size: 1rem; /* Adjust the font size of the text */
 }
 
 .tab-contents {
-    display: none;
-}
-
-.tab-contents img {
-    max-width: 100%;
-    height: auto;
-    display: grid;
-    margin: 0 auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
 }
 
 .tab-contents.active-tab {
-    display: block;
+  display: block;
+}
+
+.tab-contents img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Only apply to the Skills section */
 .tab-contents.active-tab#skills ul {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    grid-gap: 20px; /* Add some space between grid items */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Add spacing between grid items */
 }
 
 .tab-contents.active-tab#skills ul li {
-    list-style: none;
-    text-align: center; /* Center text */
-    position: relative; /* Add position relative */
-    opacity: 0; /* Initially hide */
-    animation: fadeIn 0.5s ease forwards; /* Apply fade-in animation */
+  list-style: none;
+  text-align: center; /* Center text */
+  position: relative; /* Add position relative */
+  opacity: 0; /* Initially hide */
+  animation: fadeIn 0.5s ease forwards; /* Apply fade-in animation */
 }
 
 .tab-contents.active-tab#skills ul li img {
-    max-width: 100%;
-    height: 150px; /* Set a fixed height for all images */
-    object-fit: cover; /* Ensure all images have the same aspect ratio */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.tab-contents.active-tab#skills ul li span {
-    display: block;
-    margin-top: 10px; /* Add space between image and text */
+  width: 50px; /* Adjust the width of the icon as needed */
+  height: 50px; /* Set the height to match the width for consistency */
+  margin-bottom: 10px; /* Add spacing between the icon and text */
 }
 
 /* New section for other skills */
 .other-skills {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+  gap: 20px;
 }
 
 /* Adjust the styling for the grid items */
 .grid-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    opacity: 0;
-    animation: fadeIn 2.5s ease forwards;
+  text-align: center; /* Center text */
 }
 
 .grid-item img {
-    width: 30px; /* Adjust the width of the icon as needed */
-    height: 30px; /* Set the height to match the width for consistency */
-    margin-bottom: 10px; /* Add spacing between the icon and text */
+  width: 50px; /* Adjust the width of the icon as needed */
+  height: 50px; /* Set the height to match the width for consistency */
+  margin-bottom: 10px; /* Add spacing between the icon and text */
 }
 
 /* Adjust the styling for the span */
 .grid-item span {
-    font-size: 16px; /* Adjust the font size of the text */
-}
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  font-size: 1rem; /* Adjust the font size of the text */
 }
 
 /* Fade-in animation */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-    .grid-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .tab-links {
+    margin-top: 20px;
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
 }
 
 @media (max-width: 640px) {
-    .grid-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 #certifications ul {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    grid-gap: 20px; /* Add some space between grid items */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-gap: 20px; /* Add some space between grid items */
 }
 
 #certifications ul li {
-    list-style: none;
-    text-align: center; /* Center text */
+  list-style: none;
+  text-align: center; /* Center text */
 }
 
 #certifications ul li img {
-    max-width: 100%;
-    height: 150px; /* Set a fixed height for all images */
-    object-fit: cover; /* Ensure all images have the same aspect ratio */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: 150px; /* Set a fixed height for all images */
+  object-fit: cover; /* Ensure all images have the same aspect ratio */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #certifications ul li span {
-    display: block;
-    margin-top: 10px; /* Add space between image and text */
+  display: block;
+  margin-top: 10px; /* Add space between image and text */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    #certifications ul {
-        grid-template-columns: repeat(2, 1fr); /* 1 column for screens smaller than 768px (mobile view) */
-    }
+  #certifications ul {
+    grid-template-columns: repeat(2, 1fr); /* 1 column for screens smaller than 768px (mobile view) */
+  }
 }
 
 
