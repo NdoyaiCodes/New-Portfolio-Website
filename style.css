@@ -13,8 +13,8 @@ body {
 
 #parallax-container {
   overflow-x: hidden;
-  perspective: 1px; /* Create a 3D perspective for parallax effect */
-  height: 100vh; /* Set height to fit viewport */
+  perspective: 1px;
+  height: 100vh;
   background-image: url('images/Background-Images/2206_w026_n002_2088b_p1_2088.jpg');
   background-size: cover;
   background-position: center;
@@ -46,15 +46,17 @@ nav {
 }
 
 .logo {
-  max-width: 13%; /* Ensure the logo scales with the container */
-  height: auto; /* Maintain aspect ratio */
+  max-width: 12%; /* Ensure the logo scales with the container */
+  height: auto;
+  margin: 0 0 0 20px;
 }
 
 nav ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 40px;
   display: flex;
+  font-size: 2rem;
 }
 
 nav ul li {
@@ -93,7 +95,7 @@ nav ul li a:hover::after {
   }
 
   nav ul li a {
-    font-size: 16px; /* Adjust font-size for larger screens */
+    font-size: 18px;
   }
 }
 
@@ -103,21 +105,22 @@ nav ul li a:hover::after {
   cursor: pointer;
   z-index: 1001;
   margin-top: 30px;
+  margin-right: 20px;
 }
 
 @media (max-width: 640px) {
 
   .logo {
     margin-top: 5px;
-    max-width: 30%; /* Ensure the logo scales with the container */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 25%;
+    height: auto;
  }
   .menu-toggle {
     display: block;
     position: absolute;
-    top: 20px; /* Adjust the position from 50px to 20px */
+    top: 20px;
     right: 20px;
-    z-index: 1001; /* Ensure the hamburger menu button stays on top of other content */
+    z-index: 1001;
   }
 
   nav ul {
@@ -133,7 +136,7 @@ nav ul li a:hover::after {
     padding: 20px 0;
     text-align: center;
     display: none;
-    z-index: 1000; /* Ensure the menu stays on top of other content */
+    z-index: 1001;
   }
 
   nav ul li a::after {
@@ -156,15 +159,14 @@ nav ul li a:hover::after {
   }
 }
 
-
 .header-text {
-  margin-top: 50%; /* Adjust margin-top for responsiveness */
-  font-size: 4vw; /* Adjust font-size based on viewport width */
+  margin-top: 60%; /* Adjust margin-top for responsiveness */
+  font-size: 3.5vw; /* Adjust font-size based on viewport width */
 }
 
 @media (min-width: 768px) {
   .header-text {
-    margin-top: 25%; /* Adjust margin-top for larger screens */
+    margin-top: 35%; /* Adjust margin-top for larger screens */
     font-size: 2.5vw; /* Adjust font-size based on viewport width */
   }
 }
@@ -185,7 +187,6 @@ nav ul li a:hover::after {
     vertical-align: bottom;
     white-space: nowrap;
     opacity: 0;
-    /* Initially hide the spans */
 }
 
 /* CSS animation for the spans */
@@ -248,7 +249,7 @@ nav ul li a:hover::after {
 /* ----------ABOUT---------- */
 #about {
   min-height: 100vh; /* Set minimum height to viewport height */
-  padding: 80px 0;
+  padding: 30px 0;
   color: #fffcfc;
   position: relative;
   overflow-y: auto; /* Enable vertical scrolling for content if needed */
@@ -264,7 +265,7 @@ nav ul li a:hover::after {
 .row {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: wrap;s
 }
 
 .about-col-1 {
@@ -284,6 +285,16 @@ nav ul li a:hover::after {
   font-size: 3rem; /* Adjust font size for smaller screens */
   font-weight: 600;
   margin-bottom: 20px; /* Add spacing between title and content */
+  color: #9aff3c;
+}
+
+.glassmorph {
+  background-color: rgba(255, 0, 79, 0.1); /* Adjust the alpha value to control transparency */
+  backdrop-filter: blur(4px); /* Apply blur effect */
+  -webkit-backdrop-filter: blur(5px); /* For Safari */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 20px;
 }
 
 .tab-titles {
